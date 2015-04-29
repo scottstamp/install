@@ -258,7 +258,7 @@ compile_tmux(){
   echo ":Configuring Libevent"
   ./configure --prefix="$C9_DIR/local"
   echo ":Compiling Libevent"
-  make
+  make -j8
   echo ":Installing libevent"
   make install
  
@@ -270,7 +270,7 @@ compile_tmux(){
   echo ":Configuring Ncurses"
   ./configure --prefix="$C9_DIR/local" --without-tests --without-cxx
   echo ":Compiling Ncurses"
-  make
+  make -j8
   echo ":Installing Ncurses"
   make install
  
@@ -282,7 +282,7 @@ compile_tmux(){
   echo ":Configuring Tmux"
   ./configure CFLAGS="-I$C9_DIR/local/include -I$C9_DIR/local/include/ncurses" CPPFLAGS="-I$C9_DIR/local/include -I$C9_DIR/local/include/ncurses" LDFLAGS="-static-libgcc -L$C9_DIR/local/lib" LIBEVENT_CFLAGS="-I$C9_DIR/local/include" LIBEVENT_LIBS="-static -L$C9_DIR/local/lib -levent" LIBS="-L$C9_DIR/local/lib/ncurses -lncurses" --prefix="$C9_DIR/local"
   echo ":Compiling Tmux"
-  make
+  make -j8
   echo ":Installing Tmux"
   make install
 }
